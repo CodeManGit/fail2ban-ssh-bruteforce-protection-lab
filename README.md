@@ -45,7 +45,7 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 sudo systemctl status fail2ban
 
-##Configuration
+Configuration
 
 The default Fail2Ban jail configuration was copied to a local configuration file:
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local 
@@ -69,7 +69,7 @@ bantime = 3600 bans the IP for 1 hour
 logpath = %(sshd_log)s tells Fail2Ban where to look for logs
 ignoreself = false allows testing on localhost
 
-##Testing the Lab
+Testing the Lab
 
 To simulate a brute-force attack, SSH into the system and enter the wrong password multiple times:
 ssh username@127.0.0.1
@@ -78,7 +78,7 @@ After several failed attempts, check the SSH jail status:
 sudo fail2ban-client status sshd
 Fail2Ban will show failed attempts and any banned IP addresses.
 
-##Viewing Logs
+Viewing Logs
 
 sudo cat /var/log/fail2ban.log
 
@@ -86,20 +86,20 @@ SSH authentication logs:
 cat /var/log/auth.log
 These logs confirm failed login attempts and banning activity.
 
-##Unbanning an IP
+Unbanning an IP
 To remove a banned IP:
 sudo fail2ban-client set sshd unbanip 127.0.0.1
 
 Verify:
 sudo fail2ban-client status sshd
 
-##What I Learned
+What I Learned
 Through this lab, I learned how Fail2Ban helps protect Linux systems from brute-force attacks by monitoring logs and automatically banning suspicious IP addresses. I also learned how to configure SSH jail settings, review logs, troubleshoot Fail2Ban issues, and manually unban IP addresses.
 
-##Limitations
+Limitations
 Fail2Ban is effective but not a complete security solution. It depends on log files, so if logs are not working properly, it may not detect attacks. Attackers can bypass it by using slow login attempts or multiple IP addresses. It should be combined with other controls like SSH keys, firewalls, and rate limiting.
 
-##Conclusion
+Conclusion
 This lab demonstrated how Fail2Ban improves SSH security by detecting repeated failed login attempts and banning the source IP. It provides an effective layer of defense against brute-force attacks when combined with other security practices.
 
 
