@@ -96,10 +96,8 @@ sudo fail2ban-client status sshd
 What I Learned
 Through this lab, I learned how Fail2Ban helps protect Linux systems from brute-force attacks by monitoring logs and automatically banning suspicious IP addresses. I also learned how to configure SSH jail settings, review logs, troubleshoot Fail2Ban issues, and manually unban IP addresses.
 
-Limitations
 Fail2Ban is effective but not a complete security solution. It depends on log files, so if logs are not working properly, it may not detect attacks. Attackers can bypass it by using slow login attempts or multiple IP addresses. It should be combined with other controls like SSH keys, firewalls, and rate limiting.
 
-Conclusion
 This lab demonstrated how Fail2Ban improves SSH security by detecting repeated failed login attempts and banning the source IP. It provides an effective layer of defense against brute-force attacks when combined with other security practices.
 
 
